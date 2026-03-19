@@ -1,0 +1,236 @@
+=============================================================
+   COMANDOS RÁPIDOS - SISTEMA DE CONTROL DE ACTIVOS
+=============================================================
+
+INSTALACIÓN INICIAL
+===================
+
+Backend:
+--------
+cd server
+npm install
+cp .env.example .env
+# Editar .env con tu MongoDB URI
+
+Frontend:
+---------
+cd client
+npm install
+
+
+INICIAR EL SISTEMA
+==================
+
+Terminal 1 - Backend:
+---------------------
+cd server
+npm start
+
+Terminal 2 - Frontend:
+----------------------
+cd client
+npm run dev
+
+
+DESARROLLO
+==========
+
+Backend con auto-reload (requiere nodemon):
+-------------------------------------------
+cd server
+npm install -g nodemon
+nodemon server.js
+
+Frontend (ya tiene hot-reload):
+-------------------------------
+cd client
+npm run dev
+
+
+PRODUCCIÓN
+==========
+
+Compilar Frontend:
+------------------
+cd client
+npm run build
+
+Vista previa del build:
+-----------------------
+cd client
+npm run preview
+
+
+MONGODB
+=======
+
+Verificar conexión:
+-------------------
+# El servidor debe mostrar:
+# ✅ Conectado a MongoDB Atlas
+
+URI de ejemplo:
+---------------
+mongodb+srv://usuario:password@cluster.mongodb.net/activos_db?retryWrites=true&w=majority
+
+
+URLS DEL SISTEMA
+================
+
+API Backend:     http://localhost:5000
+API Health:      http://localhost:5000/api
+Frontend:        http://localhost:3000
+
+
+PRIMER USUARIO
+==============
+
+1. Ir a: http://localhost:3000
+2. Clic en "Registrarse"
+3. Llenar formulario:
+   - Nombre: Admin
+   - Email: admin@transportesmoquegua.com
+   - Rol: Administrador
+   - Contraseña: admin123 (o la que prefieras)
+4. Clic en "Registrarse"
+
+
+VERIFICAR QUE TODO FUNCIONA
+============================
+
+1. Backend funcionando:
+   curl http://localhost:5000
+   # Debe responder: {"message":"API de Control de Activos..."}
+
+2. Frontend funcionando:
+   # Abrir http://localhost:3000
+   # Debe mostrar pantalla de Login
+
+3. Base de datos conectada:
+   # En los logs del backend buscar:
+   # ✅ Conectado a MongoDB Atlas
+
+
+FLUJO DE USO RECOMENDADO
+=========================
+
+1. Crear Agencias (Tacna, Moquegua, Ilo)
+2. Registrar Personal (asignar a agencias)
+3. Registrar Activos (computadoras, laptops, etc)
+4. Crear Asignaciones (asignar activos a personal)
+5. Generar Carta de Cargo (desde Asignaciones)
+6. Registrar Bajas (cuando un activo ya no sirve)
+
+
+SOLUCIÓN DE PROBLEMAS
+======================
+
+Error: Puerto 5000 ocupado
+---------------------------
+Solución 1: Cambiar PORT en .env (ej: 5001)
+Solución 2: Matar proceso: lsof -ti:5000 | xargs kill -9
+
+Error: MongoDB no conecta
+--------------------------
+1. Verificar connection string en .env
+2. Verificar IP permitida en MongoDB Atlas
+3. Verificar usuario y contraseña
+
+Error: CORS
+-----------
+Verificar que backend esté en puerto 5000
+Verificar proxy en client/vite.config.js
+
+Error: Token inválido
+---------------------
+Cerrar sesión y volver a iniciar sesión
+
+
+ESTRUCTURA DE CARPETAS
+=======================
+
+project/
+├── server/          (Backend)
+│   ├── models/
+│   ├── routes/
+│   ├── middleware/
+│   └── server.js
+└── client/          (Frontend)
+    └── src/
+        ├── components/
+        ├── pages/
+        ├── context/
+        └── services/
+
+
+COMANDOS GIT
+============
+
+Inicializar repositorio:
+------------------------
+git init
+git add .
+git commit -m "Sistema completo de control de activos"
+
+Subir a GitHub:
+---------------
+git remote add origin https://github.com/usuario/repo.git
+git branch -M main
+git push -u origin main
+
+
+BACKUP DE BASE DE DATOS
+========================
+
+Exportar (desde MongoDB Atlas):
+--------------------------------
+Atlas → Cluster → Collections → Export
+
+Importar:
+---------
+Atlas → Cluster → Collections → Import
+
+
+VARIABLES DE ENTORNO (.env)
+============================
+
+PORT=5000
+MONGODB_URI=mongodb+srv://usuario:password@cluster.mongodb.net/activos_db
+JWT_SECRET=tu_clave_secreta_super_segura
+JWT_EXPIRE=7d
+
+
+TIPOS DE ACTIVOS DISPONIBLES
+=============================
+
+- Computadora
+- Laptop
+- Impresora
+- Monitor
+- Teclado
+- Mouse
+- Otro
+
+
+ESTADOS DE ACTIVOS
+==================
+
+- Disponible   (verde)  - Puede ser asignado
+- Asignado     (naranja) - Está en uso por personal
+- De Baja      (rojo)    - Fuera de servicio
+
+
+AGENCIAS DEL SISTEMA
+====================
+
+- Tacna
+- Moquegua
+- Ilo
+
+
+CONTACTO Y SOPORTE
+==================
+
+Para problemas técnicos, contactar al administrador del sistema.
+
+=============================================================

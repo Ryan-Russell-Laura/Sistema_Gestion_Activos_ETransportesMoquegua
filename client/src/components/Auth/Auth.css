@@ -1,0 +1,148 @@
+/* =========================================
+   Estilos de Autenticación - Transportes Moquegua
+   Tema: Verde Neón
+========================================= */
+
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Degradado de blanco (ligeramente menta) a verde neón */
+  background: linear-gradient(135deg, #f0fff4 0%, #39FF14 100%);
+  padding: 20px;
+}
+
+.auth-card {
+  background: white;
+  border-radius: 12px;
+  /* Sombra más profunda para que la tarjeta resalte sobre el fondo */
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  padding: 40px;
+  max-width: 450px;
+  width: 100%;
+}
+
+.auth-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.company-logo {
+  margin-bottom: 16px;
+}
+
+/* Cuadro del logo temporal (Placeholder) con efecto Glow */
+.logo-placeholder {
+  width: 80px;
+  height: 80px;
+  background: #39FF14; /* Verde Neón sólido */
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0a1f11; /* Letras oscuras para contraste */
+  font-size: 32px;
+  font-weight: bold;
+  margin: 0 auto;
+  box-shadow: 0 0 15px rgba(57, 255, 20, 0.6); /* Resplandor neón */
+}
+
+/* Centra y da tamaño al nuevo logo */
+.img-logo-login {
+  width: 200px;      /* Ajusta este ancho según el logo original */
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 8px; /* Opcional: si el logo es cuadrado y quieres bordes suaves */
+}
+
+/* Oculta el placeholder viejo si aún existe en el CSS */
+.logo-placeholder {
+  display: none !important;
+}
+
+/* Espaciado para el logo */
+.company-logo {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.auth-header h1 {
+  font-size: 24px;
+  color: #2c3e50;
+  margin-bottom: 8px;
+}
+
+.auth-header h2 {
+  font-size: 16px;
+  color: #7f8c8d;
+  font-weight: 400;
+}
+
+.auth-form {
+  margin-bottom: 24px;
+}
+
+.btn-block {
+  width: 100%;
+  margin-top: 8px;
+}
+
+.btn-primary {
+  background-color: #1b9e38 !important; /* Verde sólido corporativo */
+  border: none !important;
+  color: white !important;
+  font-weight: bold;
+  padding: 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #127527 !important; /* Verde más oscuro al pasar el mouse */
+  box-shadow: 0 4px 10px rgba(27, 158, 56, 0.4);
+}
+
+.btn-primary:disabled {
+  background-color: #a5d6a7;
+  color: #666;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.auth-footer {
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid #ecf0f1;
+}
+
+.auth-footer p {
+  color: #7f8c8d;
+  font-size: 14px;
+}
+
+/* Enlaces del pie de página (Registrarse / Iniciar Sesión) */
+.auth-footer a {
+  color: #1b9e38; /* Un verde un poco más oscuro para que se lea en el blanco */
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.auth-footer a:hover {
+  color: #39FF14;
+  text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+  .auth-card {
+    padding: 24px;
+  }
+
+  .auth-header h1 {
+    font-size: 20px;
+  }
+}

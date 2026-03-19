@@ -1,0 +1,175 @@
+/* Contenedor del Modal */
+.acta-modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  justify-content: center;
+  z-index: 10000; /* Por encima de todo */
+  overflow-y: auto;
+  padding: 40px 20px;
+}
+
+.acta-wrapper {
+  width: 210mm; /* Ancho A4 */
+}
+
+/* Botones flotantes */
+.acta-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+/* El Papel Blanco */
+.acta-paper {
+  background: #ffffff;
+  padding: 20mm;
+  min-height: 297mm;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  color: #000;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 12px;
+}
+
+/* Encabezado */
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid #333;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.acta-header h1 {
+  font-size: 18px;
+  text-align: center;
+  text-decoration: underline;
+  margin-bottom: 30px;
+}
+
+/* Tablas */
+.tabla-format {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.tabla-format th, .tabla-format td {
+  border: 1px solid #000;
+  padding: 10px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.tabla-format th {
+  background-color: #f2f2f2;
+  text-transform: uppercase;
+  font-size: 11px;
+}
+
+.section-title {
+  font-size: 14px;
+  background: #eee;
+  padding: 5px;
+  border-left: 5px solid #333;
+  margin: 20px 0 10px 0;
+}
+
+/* Firmas */
+.signatures {
+  margin-top: 80px;
+}
+
+.sig-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sig-box {
+  width: 45%;
+  text-align: center;
+}
+
+.sig-line {
+  border-top: 1px solid #000;
+  margin-bottom: 10px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* REGLAS DE IMPRESIÓN */
+/* REGLAS DE IMPRESIÓN CORREGIDAS */
+/* REGLAS DE IMPRESIÓN OPTIMIZADAS PARA A4 */
+/* REGLAS DE IMPRESIÓN CORREGIDAS PARA A4 */
+@media print {
+  /* 1. Definimos el tamaño físico de la hoja */
+  @page {
+    size: A4;
+    margin: 0; /* Dejamos que el padding de .acta-paper controle los márgenes */
+  }
+
+  /* 2. Ocultamos el scroll del navegador y el fondo */
+  html, body {
+    overflow: hidden !important; /* Elimina la barra de deslizar */
+    height: auto !important;
+    background: white !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  body * {
+    visibility: hidden;
+  }
+
+  /* 3. Hacemos visible solo el acta */
+  .acta-modal-overlay, 
+  .acta-modal-overlay *, 
+  .acta-wrapper, 
+  .acta-paper, 
+  .acta-paper * {
+    visibility: visible;
+  }
+
+  /* 4. AJUSTE CLAVE: El contenedor (overlay) ya no debe tener scroll ni padding */
+  .acta-modal-overlay {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    padding: 0 !important; /* Quitamos los 40px que empujaban el contenido */
+    margin: 0 !important;
+    background: white !important;
+    display: block !important;
+    overflow: visible !important; /* Aquí eliminamos la barra de deslizar interna */
+  }
+
+  /* 5. RESTAURACIÓN DEL FORMATO A4 ORIGINAL */
+  .acta-wrapper {
+    width: 210mm !important; /* Mantenemos el ancho A4 exacto */
+    margin: 0 auto !important; /* Centrado en la hoja */
+    padding: 0 !important;
+    overflow: visible !important;
+  }
+
+  .acta-paper {
+    width: 210mm !important; /* Ancho A4 exacto */
+    min-height: 297mm !important; /* Alto A4 exacto */
+    
+    /* CAMBIO AQUÍ: 10mm arriba, 20mm a los lados y abajo */
+    padding: 10mm 20mm 20mm !important;
+    margin: 0 !important;
+    box-shadow: none !important; /* Quitamos sombra en impresión */
+    border: none !important;
+    box-sizing: border-box !important; /* Para que el padding no agrande la hoja */
+    overflow: visible !important;
+  }
+
+  /* 6. Limpieza de elementos de pantalla */
+  .no-print, .acta-actions, .btn-print, .btn-close {
+    display: none !important;
+  }
+}

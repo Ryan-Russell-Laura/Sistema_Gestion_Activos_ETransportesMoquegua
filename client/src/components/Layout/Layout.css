@@ -1,0 +1,183 @@
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar {
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.logo-small {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.brand-name {
+  font-size: 18px;
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 8px;
+  color: #2c3e50;
+}
+
+.navbar-menu {
+  display: flex;
+  gap: 8px;
+  flex: 1;
+}
+
+.nav-link {
+  padding: 8px 16px;
+  text-decoration: none;
+  color: #7f8c8d;
+  border-radius: 6px;
+  transition: all 0.2s;
+  font-weight: 500;
+}
+
+.nav-link.active {
+  background: #1b9e38 !important; /* Verde Transportes Moquegua */
+  color: white;
+}
+
+.nav-link:hover {
+  background: #f0fff4; /* Un verde muy clarito al pasar el mouse */
+  color: #1b9e38;
+}
+
+.navbar-user {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.user-name {
+  color: #2c3e50;
+  font-weight: 500;
+}
+
+.btn-sm {
+  padding: 6px 12px;
+  font-size: 13px;
+}
+
+.main-content {
+  flex: 1;
+  padding: 24px;
+  background: #f5f7fa;
+}
+
+@media (max-width: 968px) {
+  .navbar {
+    flex-wrap: wrap;
+    position: relative;
+  }
+
+  .menu-toggle {
+    display: block;
+    margin-left: auto;
+  }
+
+  .navbar-menu {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 16px;
+  }
+
+  .navbar-menu.active {
+    display: flex;
+  }
+
+  .navbar-user {
+    order: -1;
+    margin-left: auto;
+  }
+
+  .user-name {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .brand-name {
+    font-size: 14px;
+  }
+
+  .main-content {
+    padding: 16px;
+  }
+}
+/* Ajuste preciso para el logo en la barra */
+.img-logo-nav {
+  height: 45px;          /* Aumentamos un poco el alto */
+  width: auto;           /* Que el ancho se ajuste proporcionalmente */
+  object-fit: contain;   /* Evita que la imagen se corte o se estire */
+  display: block;
+}
+
+.logo-small {
+  display: none;
+}
+
+.btn-secondary {
+  background-color: #1b9e38 !important;
+  border-color: #1b9e38 !important;
+  color: white !important;  
+}
+
+.btn-secondary:hover {
+  background-color: #127527 !important;
+}
+
+/* Estilo actualizado para la marca de agua */
+.footer-watermark {
+  text-align: center;
+  padding: 15px;
+  font-size: 15px; /* Aumentado de 12px a 15px para mejor legibilidad */
+  color: #7f8c8d; /* Un gris un poco más oscuro para que se note más */
+  background-color: white;
+  border-top: 1px solid #ecf0f1;
+  font-weight: 600; /* Texto un poco más grueso */
+  width: 100%;
+  margin-top: auto;
+}
+
+/* Asegura que el contenedor principal permita empujar el footer */
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
