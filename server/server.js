@@ -14,7 +14,19 @@ const repotenciacionRoutes = require('./routes/repotenciacion');
 
 const app = express();
 
-app.use(cors());
+// Busca esta línea: app.use(cors());
+// Y reemplázala por esta configuración:
+
+const corsOptions = {
+  origin: [
+    'http://localhost:3000', 
+    'https://activostransportesmoquegua.netlify.app' // La URL que aparece en tu captura de Netlify
+  ],
+  credentials: true
+};
+app.use(cors(corsOptions));
+
+
 app.use(express.json());
 
 mongoose.connect(process.env.MONGODB_URI)
