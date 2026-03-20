@@ -7,6 +7,7 @@ export default defineConfig({
     port: 3000,
     proxy: {
       '/api': {
+        // Esto solo funcionará cuando corras el proyecto en tu PC
         target: 'http://localhost:5000',
         changeOrigin: true
       }
